@@ -4,18 +4,33 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Login page</title>
+<link rel="stylesheet" href="index.css" type="text/css" />
 </head>
 <body>
+<a href="index.do"> Home Page</a>
 
- My login form goes here!
+<form action="index.do" method="post">
+<input type="hidden"  name="signup"/>
+<button class="button button2">Signup</button>
+</form>
+</br>
+</br>
+
  <form action="login.do" method="post" >
- Enter your name : <input type="text" name="name"/>
-Enter your password : <input type="text" name="password"/>
-<input type="submit"/>
+  <div class="container">
+    <label><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="name" required>
 
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
 
+    <div class="clearfix">
+      <button type="button"  class="cancelbtn">Cancel</button>
+      <button type="submit" class="signupbtn">Login</button>
+    </div>
+  </div>
+</form>
 
- </form>
 </body>
 </html>
