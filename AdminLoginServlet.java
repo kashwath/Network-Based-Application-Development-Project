@@ -18,21 +18,20 @@ public class AdminLoginServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		request.getRequestDispatcher("/WEB-INF/Views/adminLogin.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//Validate if the logged in user is an admin
 		String name=request.getParameter("name");
 		request.setAttribute("name",name );
 		
 		String password=request.getParameter("password");
 		request.setAttribute("password", password);
 		
-		/*System.out.println("username" + name);
-		System.out.println("password" + password);*/
-		
+		//verify if the login is of the admin
 		if(loginDetails.adminLogin(name, password)) {
 			request.getRequestDispatcher("/WEB-INF/Views/adminWelcome.jsp").forward(request, response);
 		

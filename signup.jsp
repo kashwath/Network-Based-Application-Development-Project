@@ -7,36 +7,28 @@
 <link rel="stylesheet" href="index.css" type="text/css" />
 </head>
 <body>
-<a href="index.do"> Home Page</a>
+<%@ include file="Header.jsp" %>
 
-
-
-<form action="index.do" method="post">
-<input type="hidden"  name="login" > 
-<button class="button button2">Login &nbsp</button>
-</form>
-</br>
-</br>
-
- <form action="signup.do" method="post" >
+<p class="four">${duplicateEmail} </p>
+ <form class= "two" action="signup.do" method="post" >
   <div class="container">
     <label><b>Email</b></label>
     <input type="text" placeholder="Enter Email" name="name" required>
 
     <label><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
+   <input type="password" name="password" id="password" placeholder="Password must contain 1 uppercase, lowercase and number" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
 
     <label><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+    <input type="password" name="password" id="password" placeholder="Repeat the password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
     <input type="checkbox" checked="checked"> Remember me
-    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
 
     <div class="clearfix">
-      <button type="button"  class="cancelbtn">Cancel</button>
+      <button type="reset"  class="cancelbtn">Cancel</button>
       <button type="submit" class="signupbtn">Sign Up</button>
     </div>
   </div>
 </form>
-
+<%@ include file="Footer.jsp" %>
 </body>
 </html>

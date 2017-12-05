@@ -11,27 +11,25 @@
 </head>
 <body>
 <%@ include file="Header.jsp" %>
-<%@ include file="logoutbutton.jsp" %>
-
 <sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver"
          url = "jdbc:mysql://tiger.ceonkd3lm0ub.us-east-2.rds.amazonaws.com:3306/userdb"
          user = "kashwath"  password = "tigerlion"/>
          
 <sql:query dataSource="${snapshot}" var="result">
-SELECT * from address;
+SELECT * from money;
 </sql:query>
+
+<sql:query dataSource="${snapshot}" var="addition">
+select sum(amount) as SUM from money;
+</sql:query>
+
+
 
 <table border="1" width="100%">
     <tr>
     	 <th>Date</th>
          <th>Name</th>
-         <th>Number of people fed</th>
-         <th>line1</th>
-         <th>line2</th>
-         <th>city</th>
-         <th>state</th>
-         <th>zipcode</th>
-         <th>country</th>
+         <th>amount</th>
     </tr>
  
 
@@ -39,16 +37,19 @@ SELECT * from address;
     <tr>
     	 <td><c:out value="${row.dateinformation}"/></td>
          <td><c:out value="${row.name}"/></td>
-         <td><c:out value="${row.noofpeople}"/></td>
-         <td><c:out value="${row.line1}"/></td>
-         <td><c:out value="${row.line2}"/></td>
-         <td><c:out value="${row.city}"/></td>
-         <td><c:out value="${row.state}"/></td>
-         <td><c:out value="${row.zipcode}"/></td>
-         <td><c:out value="${row.country}"/></td>
+         <td><c:out value="${row.amount}"/></td>
     </tr>
 </c:forEach>
  </table>
+ 
+ <h3>The total donation till now is:  </h3> 
+ <c:forEach var="row" items="${addition.rows}">
+    <tr>
+         $ <td><c:out value="${row.sum}"/></td>
+    </tr>
+</c:forEach>
+ 
+
  
  <%@ include file="Footer.jsp" %>
 </body>

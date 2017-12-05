@@ -5,35 +5,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+<![endif]-->
 <link rel="stylesheet" href="index.css" type="text/css" />
 <title>Plateful</title>
+
 </head>
 <body>
 
-<a href="index.do"> Home Page</a>
+<%@ include file="Header.jsp" %>
+<%@ include file="logoutbutton.jsp" %>
 
-<form action="index.do" method="post">
-<input type="hidden"  name="signup"/>
-<button class="button button2">Signup</button>
-</form>
-
-<form action="index.do" method="post">
-<input type="hidden"  name="login" > 
-<button class="button button2">Login &nbsp</button>
-</form>
-
- <p>  &nbspAre you an admin ? </p>
-<form action="adminLogin.do" method="post">
-<input type="hidden" name="adminlogin" ></label>
-<button class="button button2">Login as Admin</button>
- </form>
 
 <p class="one">Plateful</p>
 
 <p class="one"> Your food is too valuable to be wasted. So feed the community.</p>
 
-<p class="three">Login to continue.</p>
+<p class="three"> Don't have any excess food and still want to help the community? We also accept money donations </p>
 
+<%@ include file="Footer.jsp" %>
 
 </body>
 </html>

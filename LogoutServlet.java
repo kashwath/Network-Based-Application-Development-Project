@@ -9,30 +9,39 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ReportingServlet
+ * Servlet implementation class LogoutServlet
  */
-@WebServlet("/reporting.do")
-public class ReportingServlet extends HttpServlet {
+@WebServlet("/logout.do")
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public ReportingServlet() {
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public LogoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name=request.getParameter("name");
-		request.setAttribute("name",name );
-        
-		request.getRequestDispatcher("/WEB-INF/Views/report.jsp").forward(request, response);
+	
+		 
+         
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name=request.getParameter("name");
-		request.setAttribute("name",name );
-		
-		request.getRequestDispatcher("/WEB-INF/Views/moneyreport.jsp").forward(request, response);
+		 
+		//invalidate session object
+		HttpSession session = request.getSession(false);
+		if(session!=null)
+		session.invalidate(); 
+         request.getRequestDispatcher("/WEB-INF/Views/index.jsp").forward(request, response);
 	}
 
 }
